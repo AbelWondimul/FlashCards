@@ -1,0 +1,35 @@
+html{
+  background-color: rgb(6, 0, 47);
+  color:rgb(244, 241, 237);
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.box{
+  margin:100px 100px 00px 100px;
+  background-color: rgba(6, 74, 123, 0.452);
+  height:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 50%;
+}
+.bx{
+  margin-bottom: 100px;
+  height:100%;
+  width:30%;
+  background-color: rgba(6, 74, 123, 0.452);
+  padding-bottom: 20px;
+  text-align: center;
+  margin-left: 35%;
+  border-radius: 10px;
+ font-weight: bolder;
+  
+  
+}
+
+
+.box1:hover{
+  box-shadow: aliceblue 0px 14px 34px 0px;
+
+}
