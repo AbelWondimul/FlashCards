@@ -36,46 +36,67 @@ function App() {
 
   const[count, setCount] = useState(0);
   const [ans, showAnswer] = useState(false)
+  const [guess, setGuess] = useState({guess: '', correctGues: 0})
 
   const incCount = () => { 
     if (count < myArray.length - 1){
-      const randomIndex = Math.floor(Math.random() * myArray.length);
-      setCount(randomIndex);
+      // const randomIndex = Math.floor(Math.random() * myArray.length);
+      setCount(count + 1);
        
     } else {
       setCount(0);
     }
     showAnswer(false);
     }
-  // const decCount = () => { 
-  //   if (count > 0){
-  //     setCount(count - 1);
-       
-  //   } else {
-  //     setCount(myArray.length - 1);
-  //   }
-  //   showAnswer(false);
-  //   }
-
+    const decCount = () => { 
+      if (count > 0){
+        
+        setCount(count - 1);
+         
+      } else {
+        setCount(myArray.length - 1);
+      }
+      showAnswer(false);
+      }
+  
   const flipCard = () => {
     showAnswer(!ans);
   }
 
 
+  const streak = (e) => { 
+    
+    setGuess({guess: e.target.value, correctGues: guess.correctGues})
+  
+  }
+
+  
+
+
   question = myArray[count].question;
   answer = myArray[count].answer;
+  
+
+  const submitGuess = (e) => {
+    
+    e.preventDefault();
+    
+  if(guess.guess.toUpperCase() == answer.toUpperCase()){
+    setGuess({guess: guess.guess, correctGues: guess.correctGues + 1});
+    
+  } else {
+    setGuess({guess: guess.guess, correctGues: 0});
+  }}
 
   return (
     <div>
-      <div className="box">
-          <h1>Cell organelle Quiz</h1> 
-      </div>
       <div className="bx">
-      <br></br>
+      <h1>Cell organelle Quiz</h1> 
           <p>How much do you know about cells? Test all of your Cell knowledge here! </p>     
-          <br></br>   
           <p>Number of cards: {myArray.length}</p>
+          <p>Current Point: {guess.correctGues}</p>
       </div>
+      
       <button className="flip-card " onClick={flipCard}>
     <div className={`flip-card-inner box1 ${ans ? 'flip-card-back' : 'flip-card-front'}  `}>
       <div className="flip-card-front">
@@ -87,9 +108,17 @@ function App() {
       </div>
     </div>
       </button>
+      <div className="input1">
+    <form onSubmit={submitGuess}>
+    <label>Guess the answer here:
+    <input className="color in" value={guess.guess} onChange={streak} placeholder='Place your answer here...'   />
+    </label>
+    <button type="submit">Submit Guess</button>
+    </form>
+    </div>
       <div className='btn-box'>
-      {/* <button className='btn'  onClick={decCount}>Prev</button> */}
-      <button className='btn'  onClick={incCount}>Next</button>
+      <button className='btn' value={guess.guess} onClick={decCount}>Previous</button>
+      <button className='btn' value={guess.guess} onClick={incCount}>Next</button>
       </div>
     </div>
   )

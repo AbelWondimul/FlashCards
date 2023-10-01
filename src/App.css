@@ -61,3 +61,20 @@
   margin: auto;
   margin-top: 20px;
 }
+.input1{
+  /* margin-top: 20px;
+  margin-bottom: 100px; */
+  margin: 20px 100px 10px 40%;
+  color:rgb(79, 149, 184);
+  height:40px;
+  width: fit-content;
+  font-size: larger;
+
+}
+.in{
+  height:25px;
+  background-color: rgb(255, 255, 255);
+}
+.color{
+  color:black;
+}
